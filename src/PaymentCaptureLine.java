@@ -7,6 +7,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class PaymentCaptureLine {
+
+    /**
+     * Genera una línea de captura de pago basada en una referencia bancaria y un monto.
+     *
+     * @param bancaryReference La referencia bancaria proporcionada.
+     * @param amount           El monto asociado a la referencia bancaria.
+     * @return Una cadena que representa la línea de captura generada.
+     */
     public static String paymentCaptureLineGenerator(String bancaryReference, double amount) {
         Random random = new Random();
         String typeOfRegistration = "2";
@@ -21,6 +29,14 @@ public class PaymentCaptureLine {
                 + discountedAmount + discountIndicator + grossAmount + referenceText;
     }
 
+    /**
+     * Lee un archivo de entrada con referencias bancarias y montos, genera líneas
+     * de captura para cada uno, y guarda el resultado en un archivo de salida.
+     *
+     * @param inputFile  La ruta del archivo de entrada que contiene las referencias bancarias y montos.
+     * @param outputFile La ruta del archivo de salida donde se guardarán las líneas de captura generadas.
+     * @throws IOException Si ocurre un error durante la lectura o escritura de archivos.
+     */
     public static void generateAndSaveReferencesFromFile(String inputFile, String outputFile) throws IOException {
         try (BufferedReader br = new BufferedReader(new FileReader(inputFile)); BufferedWriter bw = new BufferedWriter(new FileWriter(outputFile))) {
             String line;
